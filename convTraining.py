@@ -13,7 +13,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 class ConvNN(nn.Module):
     def __init__(self):
         super(ConvNN, self).__init__()
-        # Сверточные слои с 32, 64 и 128 фильтрами соответственно
+        # Сверточные слои с 32 и 64 фильтрами соответственно
         self.conv1 = nn.Conv2d(1, 32, kernel_size=3, padding=1)
         self.conv2 = nn.Conv2d(32, 64, kernel_size=3, padding=1)
         # Слой максимального пулинга
@@ -64,6 +64,7 @@ def evaluate(model, dataloader, loss_fn, device):
 
     # Вычисление точности и средней потери
     accuracy = accuracy_score(y_true_list, y_pred_list)
+
     return accuracy, np.mean(losses)
 
 
